@@ -30,7 +30,7 @@ def analyze_excel_data(df: pd.DataFrame) -> Dict:
     }
 
 def plot_excel_analysis(df: pd.DataFrame, numeric_col: str, title: str, output_path: Path):
- """Plot Excel data analysis """
+    """Plot Excel data analysis """
     fig, ax = plt.subplots(figsize=(10, 6))
     
     if numeric_col in df.columns and df[numeric_col].dtype in ['int64', 'float64']:
