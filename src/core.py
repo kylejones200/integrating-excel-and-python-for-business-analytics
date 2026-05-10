@@ -29,23 +29,24 @@ def analyze_excel_data(df: pd.DataFrame) -> Dict:
         'summary': df.describe().to_dict() if len(df.select_dtypes(include=[np.number]).columns) > 0 else {}
     }
 
-def plot_excel_analysis(df: pd.DataFrame, numeric_col: str, title: str, output_path: Path):
+def plot_excel_analysis(df: pd.DataFrame, numeric_col: str, title: str, output_path: Path, plot: bool = False):
     """Plot Excel data analysis """
-    fig, ax = plt.subplots(figsize=(10, 6))
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 6))
     
-    if numeric_col in df.columns and df[numeric_col].dtype in ['int64', 'float64']:
-        ax.plot(df.index, df[numeric_col], color="#4A90A4", linewidth=1.2)
-    else:
-        numeric_cols = df.select_dtypes(include=[np.number]).columns
-        if len(numeric_cols) > 0:
-            ax.plot(df.index, df[numeric_cols[0]], color="#4A90A4", linewidth=1.2)
+        if numeric_col in df.columns and df[numeric_col].dtype in ['int64', 'float64']:
+            ax.plot(df.index, df[numeric_col], color="#4A90A4", linewidth=1.2)
         else:
-            ax.text(0.5, 0.5, 'No numeric data to plot', ha='center', va='center',
-                   transform=ax.transAxes, fontsize=14)
+            numeric_cols = df.select_dtypes(include=[np.number]).columns
+            if len(numeric_cols) > 0:
+                ax.plot(df.index, df[numeric_cols[0]], color="#4A90A4", linewidth=1.2)
+            else:
+                ax.text(0.5, 0.5, 'No numeric data to plot', ha='center', va='center',
+                       transform=ax.transAxes, fontsize=14)
     
-    ax.set_xlabel("Index")
-    ax.set_ylabel("Value")
+        ax.set_xlabel("Index")
+        ax.set_ylabel("Value")
     
-    plt.savefig(output_path, dpi=100, bbox_inches="tight")
-    plt.close()
+        plt.savefig(output_path, dpi=100, bbox_inches="tight")
+        plt.close()
 
