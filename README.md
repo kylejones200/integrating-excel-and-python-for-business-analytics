@@ -32,10 +32,10 @@ Edit `config.yaml` to customize:
 ## Excel Integration
 
 Features:
-- **Read Excel**: Load data from .xlsx files
-- **Write Excel**: Export processed data
-- **Multi-sheet**: Support for multiple sheets
-- **Data Analysis**: Statistical analysis of Excel data
+- Read Excel: Load data from .xlsx files
+- Write Excel: Export processed data
+- Multi-sheet: Support for multiple sheets
+- Data Analysis: Statistical analysis of Excel data
 
 ## Caveats
 
