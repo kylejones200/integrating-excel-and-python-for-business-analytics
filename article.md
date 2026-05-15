@@ -62,9 +62,8 @@ If the Excel file contains large sheets but you only want a small portion, you c
 ``` 
 # Read only specific columns
 df = pd.read_excel("sales_data.xlsx", usecols="A:D")
-```
 
-``` 
+
 # Or specify by column names
 df = pd.read_excel("sales_data.xlsx", usecols=["Date", "Sales", "Profit"])
 ```
