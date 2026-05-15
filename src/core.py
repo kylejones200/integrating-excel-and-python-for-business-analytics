@@ -3,7 +3,6 @@
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from typing import Dict
 import matplotlib.pyplot as plt
 import logging
 
@@ -20,7 +19,7 @@ def write_excel_data(df: pd.DataFrame, file_path: Path, sheet_name: str = 'Sheet
     """Write data to Excel file."""
     df.to_excel(file_path, sheet_name=sheet_name, index=False)
 
-def analyze_excel_data(df: pd.DataFrame) -> Dict:
+def analyze_excel_data(df: pd.DataFrame) -> dict:
     """Analyze Excel data."""
     return {
         'shape': df.shape,
