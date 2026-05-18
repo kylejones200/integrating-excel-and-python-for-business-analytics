@@ -2,6 +2,14 @@
 
 This project demonstrates integrating Excel and Python for business analytics workflows.
 
+## Business context
+
+Python fixes that. When you combine Excel's accessibility with Python's power, you get the best of both worlds. You can take spreadsheets your colleagues already use, run complex models in Python, and put the results back in Excel without any manual steps. This makes your work more scalable and accurate --- and still accessible to teams that live in Excel.
+
+This post shows how to move data between Excel and Python, automate report generation, and build hybrid analytics workflows that keep everyone productive. You'll learn how to read Excel files, write to them, format them, and even control Excel itself. We'll close with a real-world case study that combines these skills in a financial KPI dashboard.
+
+Python can read Excel files easily using the `pandas` library, which wraps the `openpyxl` and `xlrd` engines under the hood. The simplest version reads the first sheet of an Excel file into a DataFrame.
+
 ## Article
 
 Medium article: [Integrating Excel and Python for Business Analytics](https://medium.com/@kylejones_47003/integrating-excel-and-python-for-business-analytics-53281e2985e2)
