@@ -18,7 +18,7 @@ logging.basicConfig(
 )
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path: Path | None = None) -> dict:
     """Load configuration from YAML file."""
     if config_path is None:
         config_path = Path(__file__).parent / "config.yaml"
@@ -39,7 +39,6 @@ def main():
         "--output-dir", type=Path, default=None, help="Output directory"
     )
     args = parser.parse_args()
-
     config = load_config(args.config)
     output_dir = (
         Path(args.output_dir)
@@ -47,7 +46,6 @@ def main():
         else Path(config["output"]["figures_dir"])
     )
     output_dir.mkdir(exist_ok=True)
-
     if args.excel_path and args.excel_path.exists():
         df = read_excel_data(args.excel_path, config["data"]["sheet_name"])
     elif config["data"]["source"] and Path(config["data"]["source"]).exists():
@@ -74,11 +72,9 @@ def main():
 
     logging.info("Analyzing Excel data...")
     analysis = analyze_excel_data(df)
-
     logging.info("Excel Data Analysis:")
     logging.info(f"Shape: {analysis['shape']}")
     logging.info(f"Columns: {', '.join(analysis['columns'])}")
-
     if analysis["summary"]:
         logging.info("Summary Statistics:")
         logging.info(f"\n{pd.DataFrame(analysis['summary'])}")
@@ -86,7 +82,6 @@ def main():
     output_excel = output_dir / config["output"]["excel_output"]
     write_excel_data(df, output_excel)
     logging.info(f"Data written to {output_excel}")
-
     numeric_cols = df.select_dtypes(include=[np.number]).columns
     if len(numeric_cols) > 0:
         plot_excel_analysis(
